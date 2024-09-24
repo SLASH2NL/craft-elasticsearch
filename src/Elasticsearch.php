@@ -84,7 +84,9 @@ class Elasticsearch extends Plugin
             $this->controllerNamespace = 'lhs\elasticsearch\console\controllers';
         }
 
-        if (Craft::$app->getRequest()->getIsCpRequest()) {
+        $isCpRequest = Craft::$app->getRequest()->getIsCpRequest();
+        $isConsoleRequest = Craft::$app->getRequest()->getIsConsoleRequest();
+        if ($isCpRequest || $isConsoleRequest) {
             // Remove entry from the index upon deletion
             Event::on(
                 Entry::class,
