@@ -46,9 +46,20 @@ class RefreshElasticsearchIndexUtility extends Utility
      * Returns the path to the utility's SVG icon.
      * @return string|null The path to the utility SVG icon
      */
-    public static function iconPath(): ?string
+    public static function icon(): ?string
     {
         return Craft::getAlias('@lhs/elasticsearch/resources/cp/img/utility-icon.svg');
+    }
+
+    /**
+     * Icon path for Craft < 5.
+     *
+     * Returns the path to the utility's SVG icon.
+     * @return string|null The path to the utility SVG icon
+     */
+    public static function iconPath(): ?string
+    {
+        return self::icon();
     }
 
     /**

@@ -58,8 +58,7 @@ class IndexableElementModel extends \craft\base\Model implements \JsonSerializab
         return $element;
     }
 
-
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         return $this->toArray();
     }

@@ -151,7 +151,9 @@ class Elasticsearch extends Plugin
             // Register the plugin's CP utility
             Event::on(
                 Utilities::class,
-                Utilities::EVENT_REGISTER_UTILITY_TYPES,
+                version_compare(Craft::$app->getInfo()->version, '5.0', '<')
+                    ? Utilities::EVENT_REGISTER_UTILITY_TYPES
+                    : Utilities::EVENT_REGISTER_UTILITIES,
                 function (RegisterComponentTypesEvent $event) {
                     $event->types[] = RefreshElasticsearchIndexUtility::class;
                 }
