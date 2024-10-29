@@ -1,8 +1,6 @@
 <?php
 /**
- * Elasticsearch plugin for Craft CMS 3.x
- *
- * Bring the power of Elasticsearch to you Craft 3 CMS project
+ * Elasticsearch plugin for Craft CMS.
  *
  * @link      https://www.lahautesociete.com
  * @copyright Copyright (c) 2018 La Haute Société
@@ -49,17 +47,6 @@ class RefreshElasticsearchIndexUtility extends Utility
     public static function icon(): ?string
     {
         return Craft::getAlias('@lhs/elasticsearch/resources/cp/img/utility-icon.svg');
-    }
-
-    /**
-     * Icon path for Craft < 5.
-     *
-     * Returns the path to the utility's SVG icon.
-     * @return string|null The path to the utility SVG icon
-     */
-    public static function iconPath(): ?string
-    {
-        return self::icon();
     }
 
     /**
