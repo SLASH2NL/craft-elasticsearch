@@ -176,12 +176,6 @@ class ElementIndexerService extends Component
             }
         }
 
-        if (!$element->hasContent()) {
-            $message = "Not indexing entry #{$element->id} since it has no content.";
-            Craft::debug($message, __METHOD__);
-            return $message;
-        }
-
         if (!$element->getUrl()) {
             $message = "Not indexing entry #{$element->id} since it has no URL.";
             Craft::debug($message, __METHOD__);

@@ -151,9 +151,7 @@ class Elasticsearch extends Plugin
             // Register the plugin's CP utility
             Event::on(
                 Utilities::class,
-                version_compare(Craft::$app->getInfo()->version, '5.0', '<')
-                    ? Utilities::EVENT_REGISTER_UTILITY_TYPES
-                    : Utilities::EVENT_REGISTER_UTILITIES,
+                Utilities::EVENT_REGISTER_UTILITIES,
                 function (RegisterComponentTypesEvent $event) {
                     $event->types[] = RefreshElasticsearchIndexUtility::class;
                 }
@@ -256,7 +254,7 @@ class Elasticsearch extends Plugin
         $overrides = Craft::$app->getConfig()->getConfigFromFile(strtolower($this->handle));
 
         $sections = ArrayHelper::map(
-            Craft::$app->sections->getAllSections(),
+            Craft::$app->getEntries()->getAllSections(),
             'id',
             function (Section $section): array {
                 return [
