@@ -21,7 +21,7 @@ class IndexableElementModel extends \craft\base\Model implements \JsonSerializab
     public $type;
 
     /**
-     * @return Element
+     * @return Element|null
      * @throws IndexableElementModelException
      */
     public function getElement()
@@ -49,10 +49,6 @@ class IndexableElementModel extends \craft\base\Model implements \JsonSerializab
                 break;
             default:
                 throw new IndexableElementModelException($this, IndexableElementModelException::UNEXPECTED_TYPE);
-        }
-
-        if ($element === null) {
-            throw new IndexableElementModelException($this, IndexableElementModelException::ELEMENT_NOT_FOUND);
         }
 
         return $element;

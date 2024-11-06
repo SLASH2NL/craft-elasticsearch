@@ -40,7 +40,10 @@ class IndexElementJob extends BaseJob
         $model->elementId = $this->elementId;
         $model->siteId = $this->siteId;
         $model->type = $this->type;
-        Elasticsearch::getInstance()->elementIndexerService->indexElement($model->getElement());
+
+        if ($element = $model->getElement()) {
+            Elasticsearch::getInstance()->elementIndexerService->indexElement($element);
+        }
     }
 
     /**

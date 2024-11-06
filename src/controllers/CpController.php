@@ -184,7 +184,9 @@ class CpController extends Controller
         $element = $model->getElement();
 
         try {
-            return Elasticsearch::getInstance()->elementIndexerService->indexElement($element);
+            return $element
+                ? Elasticsearch::getInstance()->elementIndexerService->indexElement($element)
+                : null;
         } catch (\Exception $e) {
             Craft::error("Error while re-indexing element {$element->url}: {$e->getMessage()}", __METHOD__);
             Craft::error(VarDumper::dumpAsString($e), __METHOD__);

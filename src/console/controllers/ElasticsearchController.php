@@ -194,6 +194,8 @@ class ElasticsearchController extends Controller
             return $e->getMessage();
         }
 
-        return ElasticsearchPlugin::getInstance()->elementIndexerService->indexElement($element);
+        return $element
+            ? ElasticsearchPlugin::getInstance()->elementIndexerService->indexElement($element)
+            : null;
     }
 }
