@@ -394,7 +394,11 @@ class Elasticsearch extends Plugin
 
         if ($notDraftOrRevision) {
             if ($element->enabled && $element->getEnabledForSite()) {
-                $this->reindexQueueManagementService->enqueueJob($element->id, $element->siteId, get_class($element));
+
+                // Only index entry items with an uri. This prevents jobs being spawned for Matrix entries in Craft 5.
+                if (! $element instanceof Entry || $element->uri) {
+                    $this->reindexQueueManagementService->enqueueJob($element->id, $element->siteId, get_class($element));
+                }
             } else {
                 try {
                     $this->elementIndexerService->deleteElement($element);
